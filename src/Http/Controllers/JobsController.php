@@ -17,7 +17,7 @@ class JobsController
      *
      * @param  \Illuminate\Contracts\Console\Kernel   $kernel (Not sure why we need to inject the kernel, but without it we don't get the schedueld jobs. Prob something to do with how the schedule method is called from the kernel)
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
-     * @return void
+     * @return JobCollection
      *
      * @throws \Exception
      */

@@ -7,10 +7,11 @@ use Llaski\NovaScheduledJobs\Tests\TestCase;
 use Laravel\Nova\Http\Middleware\Authenticate;
 use Llaski\NovaScheduledJobs\Http\Middleware\Authorize;
 use Llaski\NovaScheduledJobs\Tests\Fixtures\Console\Kernel;
+use PHPUnit\Framework\Attributes\Test;
 
 class ListJobsTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function hasCorrectMiddleware()
     {
         $this->assertRouteUsesMiddleware('nova-scheduled-jobs.jobs', ['nova', Authenticate::class, Authorize::class], exact: true);
@@ -23,7 +24,7 @@ class ListJobsTest extends TestCase
         Carbon::setTestNow();
     }
 
-    /** @test */
+    #[Test]
     public function itReturnsAnEmptyArrayIfThereAreNoJobsScheduled()
     {
         $response = $this->withoutMiddleware()->getJson('nova-vendor/nova-scheduled-jobs/jobs');
@@ -32,7 +33,7 @@ class ListJobsTest extends TestCase
         $response->assertJson([]);
     }
 
-    /** @test */
+    #[Test]
     public function itReturnsAListOfScheduledJobs()
     {
         Carbon::setTestNow(Carbon::parse('1/1/2022'));

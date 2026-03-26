@@ -7,3 +7,5 @@ composer.phar
 .DS_Store
 Thumbs.db
 auth.json
+composer.lock
+package-lock.json
